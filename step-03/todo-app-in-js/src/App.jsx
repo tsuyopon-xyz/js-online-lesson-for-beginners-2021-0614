@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTodo, FILTER_STATUS_MAP } from './hooks/TodoHook';
 import TodoItems from './components/TodoItems';
+import TodoStatusFilter from './components/TodoStatusFilter';
 
 function App() {
   const [todoTitle, setTodoTitle] = useState('');
@@ -17,23 +18,7 @@ function App() {
   return (
     <div>
       <h1>Todo App in JS</h1>
-      <div>
-        <h2>フィルター</h2>
-        <button onClick={() => changeFilterStatus(FILTER_STATUS_MAP.ALL)}>
-          「全て」表示する
-        </button>
-        <button onClick={() => changeFilterStatus(FILTER_STATUS_MAP.NOT_START)}>
-          「未着手」のみ表示する
-        </button>
-        <button
-          onClick={() => changeFilterStatus(FILTER_STATUS_MAP.IN_PROGRESS)}
-        >
-          「作業中」のみ表示する
-        </button>
-        <button onClick={() => changeFilterStatus(FILTER_STATUS_MAP.DONE)}>
-          「完了」のみ表示する
-        </button>
-      </div>
+      <TodoStatusFilter onClickFilterButton={changeFilterStatus} />
       <div>
         <input
           type="text"
