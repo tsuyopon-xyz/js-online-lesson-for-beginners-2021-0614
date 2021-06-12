@@ -1,12 +1,18 @@
 import React from 'react';
-import { TODO_STATUS_MAP } from '../hooks/TodoHook';
+import { TODO_STATUS_MAP, TodoStatusValue, Todo } from '../types/Todo';
 
-export default function TodoItems({
+type Props = {
+  todos: Todo[];
+  onClickDeleteButton: (id: number) => void;
+  onClickChangeTodoStatus: (id: number, status: TodoStatusValue) => void;
+};
+
+const TodoItems: React.VFC<Props> = ({
   todos,
   onClickDeleteButton,
   onClickChangeTodoStatus,
-}) {
-  const renderStatusChangeButton = (todo) => {
+}) => {
+  const renderStatusChangeButton = (todo: Todo) => {
     return (
       <>
         {/* 未着手ボタンの表示 */}
@@ -60,4 +66,6 @@ export default function TodoItems({
       })}
     </ul>
   );
-}
+};
+
+export default TodoItems;

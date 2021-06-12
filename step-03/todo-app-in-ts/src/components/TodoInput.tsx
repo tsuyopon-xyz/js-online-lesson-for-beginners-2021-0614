@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-export default function TodoInput({ onClickAddButton }) {
+type Props = {
+  onClickAddButton: (title: string) => void;
+};
+
+const TodoInput: React.VFC<Props> = ({ onClickAddButton }) => {
   const [todoTitle, setTodoTitle] = useState('');
   return (
     <div>
@@ -12,4 +16,6 @@ export default function TodoInput({ onClickAddButton }) {
       <button onClick={() => onClickAddButton(todoTitle)}>追加</button>
     </div>
   );
-}
+};
+
+export default TodoInput;

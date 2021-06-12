@@ -1,18 +1,14 @@
 import { useState } from 'react';
-
-export const TODO_STATUS_MAP = {
-  NOT_START: '未着手',
-  IN_PROGRESS: '作業中',
-  DONE: '完了',
-};
-
-export const FILTER_STATUS_MAP = {
-  ...TODO_STATUS_MAP,
-  ALL: '全て',
-};
+import {
+  FILTER_STATUS_MAP,
+  FilterValue,
+  TODO_STATUS_MAP,
+  TodoStatusValue,
+  Todo,
+} from '../types/Todo';
 
 let nextId = 1;
-const createTodo = (title) => {
+const createTodo = (title: string): Todo => {
   return {
     id: nextId++,
     title,
@@ -20,17 +16,13 @@ const createTodo = (title) => {
   };
 };
 
-// const DUMMY_TODOS = Array.from({ length: 10 }).map((_, index) =>
-//   createTodo('ダミー' + index)
-// );
-
 export const useTodo = () => {
-  const [todos, setTodos] = useState([]);
-  const [currentStatusFilter, setCurrentStatusFilter] = useState(
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [currentStatusFilter, setCurrentStatusFilter] = useState<FilterValue>(
     FILTER_STATUS_MAP.ALL
   );
 
-  const addTodo = (title) => {
+  const addTodo = (title: string) => {
     if (!title) {
       alert('タイトルを入力してください');
       return;
@@ -40,13 +32,7 @@ export const useTodo = () => {
     setTodos([...todos, todo]);
   };
 
-  const changeTodoStatusById = (id, newStatus) => {
-    const validTodoStatuses = Object.values(TODO_STATUS_MAP);
-    if (!validTodoStatuses.includes(newStatus)) {
-      alert('不正なTodo状態の値です');
-      return;
-    }
-
+  const changeTodoStatusById = (id: number, newStatus: TodoStatusValue) => {
     const newTodos = todos.map((todo) => {
       if (id !== todo.id) {
         return todo;
@@ -58,17 +44,11 @@ export const useTodo = () => {
     setTodos(newTodos);
   };
 
-  const changeFilterStatus = (newStatus) => {
-    const validFilterStatuses = Object.values(FILTER_STATUS_MAP);
-    if (!validFilterStatuses.includes(newStatus)) {
-      alert('不正なフィルター値です');
-      return;
-    }
-
+  const changeFilterStatus = (newStatus: FilterValue) => {
     setCurrentStatusFilter(newStatus);
   };
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: number) => {
     const newTodos = todos.filter((todo) => id !== todo.id);
     setTodos(newTodos);
   };

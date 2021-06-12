@@ -1,7 +1,11 @@
 import React from 'react';
-import { FILTER_STATUS_MAP } from '../hooks/TodoHook';
+import { FilterValue, FILTER_STATUS_MAP } from '../types/Todo';
 
-export default function TodoStatusFilter({ onClickFilterButton }) {
+type Props = {
+  onClickFilterButton: (filterStatus: FilterValue) => void;
+};
+
+const TodoStatusFilter: React.VFC<Props> = ({ onClickFilterButton }) => {
   return (
     <div>
       <h2>フィルター</h2>
@@ -21,4 +25,6 @@ export default function TodoStatusFilter({ onClickFilterButton }) {
       </button>
     </div>
   );
-}
+};
+
+export default TodoStatusFilter;
