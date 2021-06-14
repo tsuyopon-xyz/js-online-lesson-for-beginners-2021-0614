@@ -1,5 +1,5 @@
 import React from 'react';
-import { TODO_STATUS_MAP, TodoStatusValue, Todo } from '../types/Todo';
+import { TODO_STATUS_MAP, TodoStatusValue, Todo } from 'types/Todo';
 
 type Props = {
   todos: Todo[];

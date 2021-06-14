@@ -5,7 +5,7 @@ import {
   TODO_STATUS_MAP,
   TodoStatusValue,
   Todo,
-} from '../types/Todo';
+} from 'types/Todo';
 
 let nextId = 1;
 const createTodo = (title: string): Todo => {

@@ -1,7 +1,7 @@
-import { useTodo } from './hooks/TodoHook';
-import TodoItems from './components/TodoItems';
-import TodoInput from './components/TodoInput';
-import TodoStatusFilter from './components/TodoStatusFilter';
+import { useTodo } from 'hooks/TodoHook';
+import TodoItems from 'components/TodoItems';
+import TodoInput from 'components/TodoInput';
+import TodoStatusFilter from 'components/TodoStatusFilter';
 
 function App() {
   const {

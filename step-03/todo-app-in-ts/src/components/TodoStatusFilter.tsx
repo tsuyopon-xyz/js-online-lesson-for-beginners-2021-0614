@@ -1,5 +1,5 @@
 import React from 'react';
-import { FilterValue, FILTER_STATUS_MAP } from '../types/Todo';
+import { FilterValue, FILTER_STATUS_MAP } from 'types/Todo';
 
 type Props = {
   onClickFilterButton: (filterStatus: FilterValue) => void;
